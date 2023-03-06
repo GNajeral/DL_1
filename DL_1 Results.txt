@@ -1,0 +1,398 @@
+
+-----------------------------------------------------------------------------------
+COSAS PARA EL FORESEEABLE FUTURE
+
+print('Load model')
+model = Sequential()
+
+model.add(Conv2D(32, (3,3), input_shape=(224, 224, 3)))
+model.add(MaxPooling2D(2,2))
+model.add(BatchNormalization())
+model.add(LeakyReLU(alpha=0.01))
+
+model.add(Conv2D(64, (3,3), input_shape=(224, 224, 3)))
+model.add(MaxPooling2D(2,2))
+model.add(BatchNormalization())
+model.add(LeakyReLU(alpha=0.01))
+
+model.add(Conv2D(128, (3,3), input_shape=(224, 224, 3)))
+model.add(MaxPooling2D(2,2))
+model.add(BatchNormalization())
+model.add(LeakyReLU(alpha=0.01))
+
+model.add(Conv2D(256, (3,3), input_shape=(224, 224, 3)))
+model.add(MaxPooling2D(2,2))
+model.add(BatchNormalization())
+model.add(LeakyReLU(alpha=0.01))
+model.add(Flatten(input_shape=(224, 224, 3)))
+
+model.add(Dense(512, kernel_regularizer=l1(0.001), bias_regularizer=l1(0.001)))
+model.add(BatchNormalization())
+model.add(LeakyReLU(alpha=0.01))
+model.add(Dropout(0.4))
+
+model.add(Dense(256, kernel_regularizer=l2(0.001), bias_regularizer=l2(0.001)))
+model.add(BatchNormalization())
+model.add(LeakyReLU(alpha=0.01))
+model.add(Dropout(0.4))
+
+model.add(Dense(len(categories), kernel_regularizer=l2(0.001), bias_regularizer=l2(0.001)))
+model.add(Activation('softmax'))
+model.summary()
+
+
+-----------------------------------------------------------------------------------
+RESULTADOS
+
+print('Load model')
+model = Sequential()
+
+model.add(Conv2D(32, (3,3), input_shape=(224, 224, 3)))
+model.add(MaxPooling2D(2,2))
+model.add(BatchNormalization())
+model.add(LeakyReLU(alpha=0.01))
+
+model.add(Conv2D(64, (3,3), input_shape=(224, 224, 3)))
+model.add(MaxPooling2D(2,2))
+model.add(BatchNormalization())
+model.add(LeakyReLU(alpha=0.01))
+
+model.add(Conv2D(128, (3,3), input_shape=(224, 224, 3)))
+model.add(MaxPooling2D(2,2))
+model.add(BatchNormalization())
+model.add(LeakyReLU(alpha=0.01))
+
+model.add(Conv2D(256, (3,3), input_shape=(224, 224, 3)))
+model.add(MaxPooling2D(2,2))
+model.add(BatchNormalization())
+model.add(LeakyReLU(alpha=0.01))
+model.add(Flatten(input_shape=(224, 224, 3)))
+
+model.add(Dense(512))
+model.add(BatchNormalization())
+model.add(LeakyReLU(alpha=0.01))
+model.add(Dropout(0.4))
+
+model.add(Dense(len(categories)))
+model.add(Activation('softmax'))
+model.summary()
+
+
+
+Epoch 00010: val_accuracy did not improve from 0.77532 accuracy: 0.9529
+Best validation model: epoch 5  - val_accuracy 0.7753172516822815
+
+Mean Accuracy: 74.607%
+Mean Recall: 49.007%
+Mean Precision: 59.092%
+> CARGO_PLANE: Recall: 85.542% Precision: 83.529% Specificity: 99.702% Dice: 84.524%
+> HELICOPTER: Recall: 0.000% Precision: 0.000% Specificity: 100.000% Dice: 0.000%
+> SMALL_CAR: Recall: 92.639% Precision: 78.982% Specificity: 89.362% Dice: 85.267%
+> BUS: Recall: 49.779% Precision: 60.160% Specificity: 96.555% Dice: 54.479%
+> TRUCK: Recall: 44.173% Precision: 44.236% Specificity: 90.519% Dice: 44.204%
+> MOTORBOAT: Recall: 38.525% Precision: 68.116% Specificity: 99.527% Dice: 49.215%
+> FISHING_VESSEL: Recall: 36.923% Precision: 50.000% Specificity: 99.491% Dice: 42.478%
+> DUMP_TRUCK: Recall: 21.429% Precision: 51.064% Specificity: 99.507% Dice: 30.189%
+> EXCAVATOR: Recall: 57.895% Precision: 76.744% Specificity: 99.788% Dice: 66.000%
+> BUILDING: Recall: 91.462% Precision: 88.596% Specificity: 94.367% Dice: 90.006%
+> STORAGE_TANK: Recall: 51.389% Precision: 78.723% Specificity: 99.568% Dice: 62.185%
+> SHIPPING_CONTAINER: Recall: 18.333% Precision: 28.947% Specificity: 99.428% Dice: 22.449%
+
+
+-----------------------------------------------------------------------------------
+
+print('Load model')
+model = Sequential()
+
+model.add(Flatten(input_shape=(224, 224, 3)))
+
+model.add(Dense(64))
+model.add(BatchNormalization())
+model.add(LeakyReLU(alpha=0.01))
+model.add(Dropout(0.3))
+
+model.add(Dense(128))
+model.add(BatchNormalization())
+model.add(LeakyReLU(alpha=0.01))
+model.add(Dropout(0.3))
+
+model.add(Dense(256))
+model.add(BatchNormalization())
+model.add(LeakyReLU(alpha=0.01))
+model.add(Dropout(0.3))
+
+model.add(Dense(512))
+model.add(BatchNormalization())
+model.add(LeakyReLU(alpha=0.01))
+model.add(Dropout(0.3))
+
+model.add(Dense(1024))
+model.add(BatchNormalization())
+model.add(LeakyReLU(alpha=0.01))
+model.add(Dropout(0.3))
+
+model.add(Dense(2048, kernel_regularizer=l1(0.001), bias_regularizer=l1(0.001)))
+model.add(BatchNormalization())
+model.add(LeakyReLU(alpha=0.01))
+model.add(Dropout(0.3))
+
+model.add(Dense(512, kernel_regularizer=l2(0.001), bias_regularizer=l2(0.001)))
+model.add(BatchNormalization())
+model.add(LeakyReLU(alpha=0.01))
+model.add(Dropout(0.3))
+
+
+model.add(Dense(len(categories), kernel_regularizer=l2(0.001), bias_regularizer=l2(0.001)))
+model.add(Activation('softmax'))
+model.summary()
+
+
+Epoch 00020: val_accuracy did not improve from 0.53446  accuracy: 0.4940
+Best validation model: epoch 19  - val_accuracy 0.5344613194465637
+
+I deleted the results, but I was overfitted for small car and building.
+
+-----------------------------------------------------------------------------------
+
+print('Load model')
+model = Sequential()
+
+model.add(Flatten(input_shape=(224, 224, 3)))
+
+model.add(Dense(64))
+model.add(BatchNormalization())
+model.add(LeakyReLU(alpha=0.01))
+model.add(Dropout(0.3))
+
+model.add(Dense(128))
+model.add(BatchNormalization())
+model.add(LeakyReLU(alpha=0.01))
+model.add(Dropout(0.3))
+
+model.add(Dense(256))
+model.add(BatchNormalization())
+model.add(LeakyReLU(alpha=0.01))
+model.add(Dropout(0.3))
+
+model.add(Dense(512))
+model.add(BatchNormalization())
+model.add(LeakyReLU(alpha=0.01))
+model.add(Dropout(0.3))
+
+model.add(Dense(1024))
+model.add(BatchNormalization())
+model.add(LeakyReLU(alpha=0.01))
+model.add(Dropout(0.4))
+
+model.add(Dense(2048, kernel_regularizer=l1(0.001), bias_regularizer=l1(0.001)))
+model.add(BatchNormalization())
+model.add(LeakyReLU(alpha=0.01))
+model.add(Dropout(0.4))
+
+model.add(Dense(512, kernel_regularizer=l2(0.001), bias_regularizer=l2(0.001)))
+model.add(BatchNormalization())
+model.add(LeakyReLU(alpha=0.01))
+model.add(Dropout(0.4))
+
+
+model.add(Dense(len(categories), kernel_regularizer=l2(0.001), bias_regularizer=l2(0.001)))
+model.add(Activation('softmax'))
+model.summary()
+
+
+Epoch 00050: val_accuracy did not improve from 0.57054  accuracy: 0.5313
+Best validation model: epoch 44  - val_accuracy 0.5705399513244629
+
+
+Mean Accuracy: 53.799%
+Mean Recall: 19.257%
+Mean Precision: 18.375%
+> CARGO_PLANE: Recall: 0.000% Precision: 0.000% Specificity: 100.000% Dice: 0.000%
+> HELICOPTER: Recall: 0.000% Precision: 0.000% Specificity: 100.000% Dice: 0.000%
+> SMALL_CAR: Recall: 89.097% Precision: 47.239% Specificity: 57.057% Dice: 61.742%
+> BUS: Recall: 23.230% Precision: 42.510% Specificity: 96.717% Dice: 30.043%
+> TRUCK: Recall: 4.748% Precision: 24.265% Specificity: 97.477% Dice: 7.942%
+> MOTORBOAT: Recall: 0.000% Precision: 0.000% Specificity: 100.000% Dice: 0.000%
+> FISHING_VESSEL: Recall: 0.000% Precision: 0.000% Specificity: 100.000% Dice: 0.000%
+> DUMP_TRUCK: Recall: 0.893% Precision: 6.667% Specificity: 99.700% Dice: 1.575%
+> EXCAVATOR: Recall: 40.351% Precision: 28.750% Specificity: 98.792% Dice: 33.577%
+> BUILDING: Recall: 72.768% Precision: 71.068% Specificity: 85.825% Dice: 71.908%
+> STORAGE_TANK: Recall: 0.000% Precision: 0.000% Specificity: 100.000% Dice: 0.000%
+> SHIPPING_CONTAINER: Recall: 0.000% Precision: 0.000% Specificity: 100.000% Dice: 0.000%
+
+-----------------------------------------------------------------------------------
+
+print('Load model')
+model = Sequential()
+
+model.add(Flatten(input_shape=(224, 224, 3)))
+
+model.add(Dense(768, kernel_regularizer=l1(0.001), bias_regularizer=l1(0.001)))
+model.add(BatchNormalization())
+model.add(LeakyReLU(alpha=0.01))
+model.add(Dropout(0.3))
+
+model.add(Dense(512, kernel_regularizer=l2(0.001), bias_regularizer=l2(0.001)))
+model.add(BatchNormalization())
+model.add(LeakyReLU(alpha=0.01))
+model.add(Dropout(0.3))
+
+model.add(Dense(256, kernel_regularizer=l2(0.001), bias_regularizer=l2(0.001)))
+model.add(BatchNormalization())
+model.add(LeakyReLU(alpha=0.01))
+model.add(Dropout(0.3))
+
+model.add(Dense(128, kernel_regularizer=l2(0.001), bias_regularizer=l2(0.001)))
+model.add(BatchNormalization())
+model.add(LeakyReLU(alpha=0.01))
+model.add(Dropout(0.3))
+
+model.add(Dense(64, kernel_regularizer=l2(0.001), bias_regularizer=l2(0.001)))
+model.add(BatchNormalization())
+model.add(LeakyReLU(alpha=0.01))
+model.add(Dropout(0.3))
+
+
+model.add(Dense(len(categories), kernel_regularizer=l2(0.001), bias_regularizer=l2(0.001)))
+model.add(Activation('softmax'))
+model.summary()
+
+Epoch 48/70
+2261/2261 [==============================] - 304s 135ms/step - loss: 2.7081 - accuracy: 0.4210 - val_loss: 2.7887 - val_accuracy: 0.4354
+
+Epoch 00048: val_accuracy improved from 0.38268 to 0.43543, saving model to model.hdf5
+
+-----------------------------------------------------------------------------------
+
+print('Load model')
+model = Sequential()
+
+model.add(Flatten(input_shape=(224, 224, 3)))
+
+model.add(Dense(64))
+model.add(BatchNormalization())
+model.add(LeakyReLU(alpha=0.01))
+model.add(Dropout(0.3))
+
+model.add(Dense(128))
+model.add(BatchNormalization())
+model.add(LeakyReLU(alpha=0.01))
+model.add(Dropout(0.3))
+
+model.add(Dense(256))
+model.add(BatchNormalization())
+model.add(LeakyReLU(alpha=0.01))
+model.add(Dropout(0.3))
+
+model.add(Dense(512))
+model.add(BatchNormalization())
+model.add(LeakyReLU(alpha=0.01))
+model.add(Dropout(0.3))
+
+model.add(Dense(1024))
+model.add(BatchNormalization())
+model.add(LeakyReLU(alpha=0.01))
+model.add(Dropout(0.4))
+
+model.add(Dense(2048, kernel_regularizer=l1(0.001), bias_regularizer=l1(0.001)))
+model.add(BatchNormalization())
+model.add(LeakyReLU(alpha=0.01))
+model.add(Dropout(0.4))
+
+model.add(Dense(512, kernel_regularizer=l2(0.001), bias_regularizer=l2(0.001)))
+model.add(BatchNormalization())
+model.add(LeakyReLU(alpha=0.01))
+model.add(Dropout(0.4))
+
+model.add(Dense(256, kernel_regularizer=l2(0.001), bias_regularizer=l2(0.001)))
+model.add(BatchNormalization())
+model.add(LeakyReLU(alpha=0.01))
+model.add(Dropout(0.4))
+
+
+model.add(Dense(len(categories), kernel_regularizer=l2(0.001), bias_regularizer=l2(0.001)))
+model.add(Activation('softmax'))
+model.summary()
+
+
+Epoch 00062: val_accuracy improved from 0.57228 to 0.57925, saving model to model.hdf5
+Epoch 63/70
+  94/2261 [>.............................] - ETA: 4:35 - loss: 2.3318 - accuracy: 0.5206
+
+Epoch 60/60
+1131/1131 [==============================] - 280s 248ms/step - loss: 1.3829 - accuracy: 0.5734 - val_loss: 1.3348 - val_accuracy: 0.5892
+
+-----------------------------------------------------------------------------------
+
+print('Load model')
+model = Sequential()
+
+model.add(Flatten(input_shape=(224, 224, 3)))
+
+model.add(Dense(64))
+model.add(BatchNormalization())
+model.add(LeakyReLU(alpha=0.01))
+model.add(Dropout(0.3))
+
+model.add(Dense(128))
+model.add(BatchNormalization())
+model.add(LeakyReLU(alpha=0.01))
+model.add(Dropout(0.3))
+
+model.add(Dense(256))
+model.add(BatchNormalization())
+model.add(LeakyReLU(alpha=0.01))
+model.add(Dropout(0.3))
+
+model.add(Dense(512))
+model.add(BatchNormalization())
+model.add(LeakyReLU(alpha=0.01))
+model.add(Dropout(0.3))
+
+model.add(Dense(1024))
+model.add(BatchNormalization())
+model.add(LeakyReLU(alpha=0.01))
+model.add(Dropout(0.4))
+
+model.add(Dense(2048, kernel_regularizer=l1(0.001), bias_regularizer=l1(0.001)))
+model.add(BatchNormalization())
+model.add(LeakyReLU(alpha=0.01))
+model.add(Dropout(0.4))
+
+model.add(Dense(512, kernel_regularizer=l2(0.001), bias_regularizer=l2(0.001)))
+model.add(BatchNormalization())
+model.add(LeakyReLU(alpha=0.01))
+model.add(Dropout(0.4))
+
+model.add(Dense(256, kernel_regularizer=l2(0.001), bias_regularizer=l2(0.001)))
+model.add(BatchNormalization())
+model.add(LeakyReLU(alpha=0.01))
+model.add(Dropout(0.4))
+
+
+model.add(Dense(len(categories), kernel_regularizer=l2(0.001), bias_regularizer=l2(0.001)))
+model.add(Activation('softmax'))
+model.summary()
+
+Epoch 00060: val_accuracy did not improve from 0.59343
+Best validation model: epoch 56  - val_accuracy 0.5934311747550964
+
+Mean Accuracy: 58.007%
+Mean Recall: 22.293%
+Mean Precision: 20.072%
+> CARGO_PLANE: Recall: 0.000% Precision: 0.000% Specificity: 100.000% Dice: 0.000%
+> HELICOPTER: Recall: 0.000% Precision: 0.000% Specificity: 100.000% Dice: 0.000%
+> SMALL_CAR: Recall: 76.042% Precision: 60.732% Specificity: 78.783% Dice: 67.530%
+> BUS: Recall: 49.779% Precision: 39.543% Specificity: 92.046% Dice: 44.074%
+> TRUCK: Recall: 13.237% Precision: 33.333% Specificity: 95.492% Dice: 18.950%
+> MOTORBOAT: Recall: 0.000% Precision: 0.000% Specificity: 100.000% Dice: 0.000%
+> FISHING_VESSEL: Recall: 0.000% Precision: 0.000% Specificity: 100.000% Dice: 0.000%
+> DUMP_TRUCK: Recall: 0.000% Precision: 0.000% Specificity: 100.000% Dice: 0.000%
+> EXCAVATOR: Recall: 42.105% Precision: 42.857% Specificity: 99.322% Dice: 42.478%
+> BUILDING: Recall: 86.352% Precision: 64.399% Specificity: 77.159% Dice: 73.777%
+> STORAGE_TANK: Recall: 0.000% Precision: 0.000% Specificity: 100.000% Dice: 0.000%
+> SHIPPING_CONTAINER: Recall: 0.000% Precision: 0.000% Specificity: 100.000% Dice: 0.000%
+
+
+
+
