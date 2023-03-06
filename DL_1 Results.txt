@@ -314,66 +314,6 @@ model.add(Dense(len(categories), kernel_regularizer=l2(0.001), bias_regularizer=
 model.add(Activation('softmax'))
 model.summary()
 
-
-Epoch 00062: val_accuracy improved from 0.57228 to 0.57925, saving model to model.hdf5
-Epoch 63/70
-  94/2261 [>.............................] - ETA: 4:35 - loss: 2.3318 - accuracy: 0.5206
-
-Epoch 60/60
-1131/1131 [==============================] - 280s 248ms/step - loss: 1.3829 - accuracy: 0.5734 - val_loss: 1.3348 - val_accuracy: 0.5892
-
------------------------------------------------------------------------------------
-
-print('Load model')
-model = Sequential()
-
-model.add(Flatten(input_shape=(224, 224, 3)))
-
-model.add(Dense(64))
-model.add(BatchNormalization())
-model.add(LeakyReLU(alpha=0.01))
-model.add(Dropout(0.3))
-
-model.add(Dense(128))
-model.add(BatchNormalization())
-model.add(LeakyReLU(alpha=0.01))
-model.add(Dropout(0.3))
-
-model.add(Dense(256))
-model.add(BatchNormalization())
-model.add(LeakyReLU(alpha=0.01))
-model.add(Dropout(0.3))
-
-model.add(Dense(512))
-model.add(BatchNormalization())
-model.add(LeakyReLU(alpha=0.01))
-model.add(Dropout(0.3))
-
-model.add(Dense(1024))
-model.add(BatchNormalization())
-model.add(LeakyReLU(alpha=0.01))
-model.add(Dropout(0.4))
-
-model.add(Dense(2048, kernel_regularizer=l1(0.001), bias_regularizer=l1(0.001)))
-model.add(BatchNormalization())
-model.add(LeakyReLU(alpha=0.01))
-model.add(Dropout(0.4))
-
-model.add(Dense(512, kernel_regularizer=l2(0.001), bias_regularizer=l2(0.001)))
-model.add(BatchNormalization())
-model.add(LeakyReLU(alpha=0.01))
-model.add(Dropout(0.4))
-
-model.add(Dense(256, kernel_regularizer=l2(0.001), bias_regularizer=l2(0.001)))
-model.add(BatchNormalization())
-model.add(LeakyReLU(alpha=0.01))
-model.add(Dropout(0.4))
-
-
-model.add(Dense(len(categories), kernel_regularizer=l2(0.001), bias_regularizer=l2(0.001)))
-model.add(Activation('softmax'))
-model.summary()
-
 Epoch 00060: val_accuracy did not improve from 0.59343
 Best validation model: epoch 56  - val_accuracy 0.5934311747550964
 
