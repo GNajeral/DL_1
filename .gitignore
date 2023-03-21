@@ -1,2 +1,4 @@
 
 model.hdf5
+Data/prevarsTrainTotal.joblib
+Data/prevarsValidationTotal.joblib
